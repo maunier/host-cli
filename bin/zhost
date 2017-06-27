@@ -2,8 +2,8 @@
 
 'use strict'
 
-require('shelljs/global');
+const { exec } = require('child_process');
 
-// zhost: logout the content of the /etc/hosts 
-console.log(cat('/etc/hosts').stdout);
-
+exec('cat -n /etc/hosts', (err, stdout, stderr) => {
+  console.log(stdout);
+});
