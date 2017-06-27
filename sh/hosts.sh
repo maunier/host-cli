@@ -1,7 +1,9 @@
 #!/bin/zsh
 
-sudo sed -i "" '
-1i\
-begin
-$a\
-end' "/etc/hosts"
+host=$1
+ip=$2
+
+sudo sed -i "" "
+1i\\
+$host $ip
+" '/etc/hosts'

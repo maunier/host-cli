@@ -5,20 +5,19 @@
 const { exec } = require('child_process');
 const yargs = require('yargs');
 const path = require('path');
-// const hostFile = '/etc/hosts';
 
 yargs
   .command('add [ip] [host]', 'add a host', {
     ip: {},
     host: {},
   }, argv => {
-    console.log('ip:', argv.ip);
-    console.log('host:', argv.host)
     const ip = argv.ip;
     const host = argv.host;
 
-    exec(`sudo sh ${path.resolve(__dirname, '../sh/hosts.sh')}`, err => {
-      console.log(err);
+    exec(`sh ${path.resolve(__dirname, '../sh/hosts.sh')} ${host} ${ip}`, err => {
+      if (err) {
+        console.log(err)
+      }
     });
   })
   .argv;
