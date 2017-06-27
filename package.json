@@ -6,5 +6,8 @@
     "zhost": "bin/zhost"
   },
   "repository": "git@github.com:zhaorui19910121/host-cli.git",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^8.0.2"
+  }
 }
