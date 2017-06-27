@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+'use strict'
+
+require('shelljs/global');
+
+// zhost: logout the content of the /etc/hosts 
+console.log(cat('/etc/hosts').stdout);
+

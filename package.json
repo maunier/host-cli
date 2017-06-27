@@ -1,0 +1,10 @@
+{
+  "name": "host-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "zhost": "bin/zhost"
+  },
+  "repository": "git@github.com:zhaorui19910121/host-cli.git",
+  "license": "MIT"
+}
