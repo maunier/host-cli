@@ -9,3 +9,4 @@ zhost use <linenumber...>: 有时需要使用被注释掉的host绑定
   eg: zhost use 2 3 22 11 这样会去掉第2，3，22，11行的行首的第一个‘#’
 zhost un <linenumber...>: 不需要用某个host绑定的时候就给这些行加上注释
   eg: zhost un 2 5 8 这样会给第2，5，8行的开头加上‘#’
+zhost del <linenumber...>: 删除指定的行

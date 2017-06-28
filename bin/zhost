@@ -32,7 +32,7 @@ yargs
   }, argv => {
     const lines = argv.lines;
 
-    exec(`sh ${getShFilePath('zhost-use-or-unuse')} ${lines} true`, (err, stdout) => {
+    exec(`sh ${getShFilePath('zhost')} ${lines} use`, (err, stdout) => {
       err && console.log(err);
       console.log(stdout);
     })
@@ -42,7 +42,17 @@ yargs
   }, argv => {
     const lines = argv.lines;
 
-    exec(`sh ${getShFilePath('zhost-use-or-unuse')} ${lines} false`, (err, stdout) => {
+    exec(`sh ${getShFilePath('zhost')} ${lines} un`, (err, stdout) => {
+      err && console.log(err);
+      console.log(stdout);
+    });
+  })
+  .command('del [lines...]', 'delete lines', {
+    lines: {},
+  }, argv => {
+    const lines = argv.lines;
+
+    exec(`sh ${getShFilePath('zhost')} ${lines} del`, (err, stdout) => {
       err && console.log(err);
       console.log(stdout);
     });

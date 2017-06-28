@@ -1,17 +1,17 @@
 #!/bin/zsh
 
 lines=$1
-isUse=$2
+operationType=$2
 hostFile='/etc/hosts'
 
 for line in ${lines[@]}
 do
-  if [ $isUse = 'true' ]; then
-    echo istrue:$isUse
+  if [ $operationType = use ]; then
     sudo sed -i '' "${line}s/^#//" $hostFile
-  else
-    echo isfalse:$isUse
+  elif [ $operationType = un ]; then
     sudo sed -i '' "${line}s/^/#/" $hostFile
+  elif [ $operationType = del ]; then
+    sudo sed -i '' "${line}d" $hostFile
   fi
 done
 
