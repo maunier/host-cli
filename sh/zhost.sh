@@ -1,18 +1,26 @@
 #!/bin/zsh
 
-lines=$1
+IFS=, # 定义了for循环时，字符串的分割方法
+lines=$1 # [1, 3, 5 ...]
 operationType=$2
 hostFile='/etc/hosts'
+delStr=''
 
+# lines被解析成了字符串=> [1, 3]
+# 如果不定义IFS变量，则line将会是lines变量的值，不会被分割
 for line in ${lines[@]}
 do
   if [ $operationType = use ]; then
-    sudo sed -i '' "${line}s/^#//" $hostFile
+    sudo sed -i '.bac' "${line}s/^#//" $hostFile
   elif [ $operationType = un ]; then
-    sudo sed -i '' "${line}s/^/#/" $hostFile
+    sudo sed -i '.bac' "${line}s/^/#/" $hostFile
   elif [ $operationType = del ]; then
-    sudo sed -i '' "${line}d" $hostFile
+    delStr=$delStr$line'd;'
   fi
 done
+
+if [ $operationType = del ]; then
+  sudo sed -i '.bac' "$delStr" $hostFile
+fi
 
 cat -n $hostFile;
