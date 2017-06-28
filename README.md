@@ -15,11 +15,12 @@ npm install -g host-cli
 
 展示目前的hosts配置
 
-zhost add ip host -m “comment”
+### zhost add ip host -m “comment”
 
 在host文件首行插入ip host的绑定, 后面会加上注释“comment”，并输出修改后的host文件内容 
 zhost add 127.0.0.0 localhost -m "本地host" 
 输出127.0.0.0 localhost # 本地host
+
 
 ### zhost use <linenumber...>:
 
