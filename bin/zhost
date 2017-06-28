@@ -32,10 +32,20 @@ yargs
   }, argv => {
     const lines = argv.lines;
 
-    exec(`sh ${getShFilePath('zhost-use')} ${lines}`, (err, stdout) => {
+    exec(`sh ${getShFilePath('zhost-use-or-unuse')} ${lines} true`, (err, stdout) => {
       err && console.log(err);
       console.log(stdout);
     })
+  })
+  .command('un [lines...]', 'unuse the ip host at the line', {
+    lines: {},
+  }, argv => {
+    const lines = argv.lines;
+
+    exec(`sh ${getShFilePath('zhost-use-or-unuse')} ${lines} false`, (err, stdout) => {
+      err && console.log(err);
+      console.log(stdout);
+    });
   })
   .argv;
 
