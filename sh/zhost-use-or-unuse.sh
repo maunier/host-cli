@@ -8,7 +8,7 @@ for line in ${lines[@]}
 do
   if [ $isUse = 'true' ]; then
     echo istrue:$isUse
-    sudo sed -i '' "${line}s/^#/ /" $hostFile
+    sudo sed -i '' "${line}s/^#//" $hostFile
   else
     echo isfalse:$isUse
     sudo sed -i '' "${line}s/^/#/" $hostFile
