@@ -5,4 +5,6 @@ a cli to modify host file on osx
 
 zhost: 展示目前的hosts配置
 zhost add <ip> <host>: 在host文件首行插入ip host的绑定，并输出修改后的host文件内容
+zhost use <linenumber...>: 有时需要使用被注释掉的host绑定
+  eg: zhost use 2 3 22 11 这样会去掉第2，3，22，11行的行首的第一个‘#’
 
