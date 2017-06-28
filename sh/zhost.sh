@@ -15,7 +15,7 @@ do
   elif [ $operationType = un ]; then
     sudo sed -i '.bac' "${line}s/^/#/" $hostFile
   elif [ $operationType = del ]; then
-    delStr=$delStr$line'd;'
+    delStr="$delStr${line}d;"
   fi
 done
 

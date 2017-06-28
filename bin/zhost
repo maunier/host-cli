@@ -18,11 +18,13 @@ yargs
   .command('add [ip] [host]', 'add a host', {
     ip: {},
     host: {},
+    m: {}
   }, argv => {
     const ip = argv.ip;
     const host = argv.host;
+    const comment = argv.m;
 
-    exec(`sh ${getShFilePath('zhost-add')} ${ip} ${host}`, (err, stdout) => {
+    exec(`sh ${getShFilePath('zhost-add')} ${ip} ${host} '${comment}'`, (err, stdout) => {
       err && console.log(err);
       console.log(stdout);
     });
