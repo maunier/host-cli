@@ -5,6 +5,7 @@
 const { exec } = require('child_process');
 const yargs = require('yargs');
 const path = require('path');
+const argv = yargs.argv;
 
 yargs
   .command('add [ip] [host]', 'add a host', {
@@ -14,15 +15,20 @@ yargs
     const ip = argv.ip;
     const host = argv.host;
 
-    exec(`sh ${path.resolve(__dirname, '../sh/hosts.sh')} ${host} ${ip}`, err => {
+    exec(`sh ${path.resolve(__dirname, '../sh/hosts.sh')} ${ip} ${host}`, (err, stdout) => {
       if (err) {
         console.log(err)
       }
+      // exec也是基于event emitter做的，得做stdout监听，捕获data再打出来
+      // node调shell脚本，shell脚本的内容是不会直接输出到标准流的，因为通过exec创建的子进程，子进程会把输出返回给Nodejs
+      console.log(stdout);
     });
   })
   .argv;
 
-
-exec('cat -n /etc/hosts', (err, stdout, stderr) => {
-  console.log(stdout);
-});
+const justDisplay = !argv._.length;
+if (justDisplay) {
+  exec('cat -n /etc/hosts', (err, stdout, stderr) => {
+    console.log(stdout);
+  });
+}
