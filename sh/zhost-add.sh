@@ -12,13 +12,12 @@ fi
 
 addStr="$ip $host"
 if [ "$comment" != 'undefined' ]; then
-  echo 111
   addStr="$addStr# $comment"
 fi
 
 # $ip $host # $comment
 sudo sed -i '.bac' "
-  1i\\
+  \$a\\
   $addStr
   " $hostFile;
 

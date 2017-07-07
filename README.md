@@ -22,6 +22,7 @@ npm install -g host-cli
 zhost add 127.0.0.0 localhost -m "本地host" 
 输出127.0.0.0 localhost # 本地host
 
+注：1.0.2版本是在末行增加，考虑到在首行加会改变以前的host的行号。
 
 ### zhost use <linenumber...>:
 
@@ -46,3 +47,4 @@ zhost del 1 2 3 10 33
 ## 备份
 
 以上所有的修改操作，都会将修改前的文件存放到/etc/hosts.bac文件中
+
