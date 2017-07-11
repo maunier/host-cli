@@ -11,7 +11,10 @@ delStr=''
 for line in ${lines[@]}
 do
   if [ $operationType = use ]; then
-    sudo sed -i '.bac' "${line}s/^#//" $hostFile
+    # fix maybe many whitespace and '#' at head of the line
+    # example: 3    # # 123.23.4.2 www.a.b.c #comment
+    # use zhost use 3 => 123.23.4.2 www.a.b.c #comment
+    sudo sed -i '.bac' "${line}s/^[ *#]*//" $hostFile
   elif [ $operationType = un ]; then
     sudo sed -i '.bac' "${line}s/^/#/" $hostFile
   elif [ $operationType = del ]; then
