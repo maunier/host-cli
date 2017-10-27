@@ -15,16 +15,12 @@ function getShFilePath(filename) {
 // node调shell脚本，shell脚本的内容是不会直接输出到标准流的，因为通过exec创建的子进程，子进程会把输出返回给Nodejs
 
 yargs
-  .command('add [ip] [host]', 'add a host', {
-    ip: {},
-    host: {},
-    m: {}
+  .command('add [content...]', 'add a host', {
+    content: {},
   }, argv => {
-    const ip = argv.ip;
-    const host = argv.host;
-    const comment = argv.m;
+    const content = argv.content;
 
-    exec(`sh ${getShFilePath('zhost-add')} ${ip} ${host} '${comment}'`, (err, stdout) => {
+    exec(`sh ${getShFilePath('zhost-add')} ${content}`, (err, stdout) => {
       err && console.log(err);
       console.log(stdout);
     });
